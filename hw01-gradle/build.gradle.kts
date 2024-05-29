@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
     implementation ("com.google.guava:guava")
+    implementation ("ch.qos.logback:logback-classic")
+
 }
 
 tasks {
@@ -14,7 +16,7 @@ tasks {
         archiveVersion.set("0.1")
         archiveClassifier.set("")
         manifest {
-            attributes(mapOf("Main-Class" to "ru.otus.App"))
+            attributes(mapOf("Main-Class" to "ru.otus.HelloOtus"))
         }
     }
 
