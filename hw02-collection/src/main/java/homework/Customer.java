@@ -25,7 +25,9 @@ public class Customer {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.equals(this.name)) {
+            this.name = name;
+        }
     }
 
     public long getScores() {

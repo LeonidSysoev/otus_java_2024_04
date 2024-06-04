@@ -11,11 +11,12 @@ public class CustomerReverseOrder {
     // надо подобрать подходящую структуру данных, тогда решение будет в "две строчки"
     private final Deque<Customer> customerDeque = new ArrayDeque<>();
 
+
     public void add(Customer customer) {
-        customerDeque.add(customer);
+        customerDeque.offerLast(customer);
     }
 
     public Customer take() {
-        return customerDeque.getLast(); // это "заглушка, чтобы скомилировать"
+        return customerDeque.removeLast(); // это "заглушка, чтобы скомилировать"
     }
 }
