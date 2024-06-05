@@ -25,9 +25,7 @@ public class Customer {
     }
 
     public void setName(String name) {
-        if (name.equals(this.name)) {
-            this.name = name;
-        }
+        this.name = name;
     }
 
     public long getScores() {
@@ -49,11 +47,15 @@ public class Customer {
         if (o == null || o.getClass() != this.getClass()) return false;
 
         Customer customer = (Customer) o;
-        return id == customer.id && scores == customer.scores && Objects.equals(name, customer.name);
+        if (id != customer.id) return false;
+        if (scores != customer.scores) return false;
+        //return id == customer.id && scores == customer.scores && Objects.equals(name, customer.name);
+        return Objects.equals(name, customer.name);
+
     }
 
     @Override
     public int hashCode() {
-       return Objects.hash(id, name, scores);
+       return Objects.hash(name);
     }
 }
