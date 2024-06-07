@@ -121,7 +121,7 @@ class CustomerTest {
         Customer customer2 = new Customer(3, "Petr", 11);
         Customer customer3 = new Customer(2, "Pavel", 888);
 
-        CustomerReverseOrder customerReverseOrder = new CustomerReverseOrder(customerDeque);
+        CustomerReverseOrder customerReverseOrder = new CustomerReverseOrder();
         customerReverseOrder.add(customer1);
         customerReverseOrder.add(customer2);
         customerReverseOrder.add(customer3);

@@ -15,20 +15,11 @@ public class CustomerService {
 
 
     public Map.Entry<Customer, String> getSmallest() {
-        var smallest = Map.Entry.comparingByKey(Comparator.comparing(Customer::getScores));
-//        for (Map.Entry<Customer, String> customer : map.entrySet()) {
-//            if (smallest == null || smallest.getKey().getScores() > customer.getKey().getScores()) {
-//                smallest = customer;
-//            }
-//        }
-
-        // Возможно, чтобы реализовать этот метод, потребуется посмотреть как Map.Entry сделан в jdk
-        return null;
-                //Map.entry(new Customer(map.firstEntry().getKey()), map.firstEntry().getValue());  // это "заглушка, чтобы скомилировать"
+        return Map.entry(new Customer(map.firstEntry().getKey()), map.firstEntry().getValue());
     }
 
     public Map.Entry<Customer, String> getNext(Customer customer) {
-        return null; // это "заглушка, чтобы скомилировать"
+        return Map.entry(map.higherEntry(customer).getKey(), map.higherEntry(customer).getValue());
     }
 
     public void add(Customer customer, String data) {

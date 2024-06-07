@@ -4,7 +4,6 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 
-
 public class CustomerReverseOrder {
 
     // todo: 2. надо реализовать методы этого класса
@@ -21,6 +20,6 @@ public class CustomerReverseOrder {
     }
 
     public Customer take() {
-        return customerDeque.removeLast(); // это "заглушка, чтобы скомилировать"
+        return customerDeque.removeLast();
     }
 }
