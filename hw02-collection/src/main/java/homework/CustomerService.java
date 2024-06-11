@@ -15,7 +15,8 @@ public class CustomerService {
 
 
     public Map.Entry<Customer, String> getSmallest() {
-        return Map.entry(new Customer(map.firstEntry().getKey()), map.firstEntry().getValue());
+        var first = map.firstEntry();
+        return Map.entry(new Customer(first.getKey()), first.getValue());
     }
 
     public Map.Entry<Customer, String> getNext(Customer customer) {

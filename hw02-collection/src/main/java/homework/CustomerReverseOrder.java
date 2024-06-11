@@ -16,10 +16,10 @@ public class CustomerReverseOrder {
 
 
     public void add(Customer customer) {
-        customerDeque.offerLast(customer);
+        customerDeque.push(customer);
     }
 
     public Customer take() {
-        return customerDeque.removeLast();
+        return customerDeque.pop();
     }
 }
