@@ -5,8 +5,8 @@ dependencies {
     implementation("org.assertj:assertj-core")
     implementation("org.mockito:mockito-core")
     implementation("org.mockito:mockito-junit-jupiter")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+//    compileOnly("org.projectlombok:lombok")
+//    annotationProcessor("org.projectlombok:lombok")
 
 }
 
