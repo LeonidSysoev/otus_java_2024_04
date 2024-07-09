@@ -1,11 +1,11 @@
 package ru.otus;
 
-import ru.otus.testframework.TestFramework;
+import ru.otus.testframework.TestClassContext;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class App {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException {
-        TestFramework.runTest("ru.otus.testframework.CalcClassTest");
+        TestClassContext.runTest("ru.otus.testframework.test.CalcClassTest");
     }
 }

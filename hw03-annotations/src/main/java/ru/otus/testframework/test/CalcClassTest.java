@@ -1,8 +1,9 @@
-package ru.otus;
+package ru.otus.testframework.test;
 
 import ru.otus.testframework.annotations.After;
 import ru.otus.testframework.annotations.Before;
 import ru.otus.testframework.annotations.Test;
+import ru.otus.testframework.calculator.CalcClass;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -34,8 +35,10 @@ public class CalcClassTest {
 
     @Test
     public void divideTest() {
-        int actual = calcClass.divide(10, 0);
-        assertThat(actual).isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> {
+            int actual = calcClass.divide(10, 0);
+        }).isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @After

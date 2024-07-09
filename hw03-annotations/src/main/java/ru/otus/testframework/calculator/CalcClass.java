@@ -1,4 +1,4 @@
-package ru.otus;
+package ru.otus.testframework.calculator;
 
 public class CalcClass {
     private int num1;
