@@ -9,16 +9,17 @@ import java.lang.reflect.Method;
 
 public class TestExecutor {
     private static final Logger logger = LoggerFactory.getLogger(TestExecutor.class);
+    private static int failsCounter = 0;
 
     public TestExecutor() {
     }
 
     static void executeTest(TestClassContext testClassContext) throws InvocationTargetException, IllegalAccessException {
-        for (Method method : testClassContext.testMethods) {
-            var testObject = ReflectionHelper.instantiate(testClassContext.clazz);
+        for (Method method : testClassContext.getTestMethods()) {
+            var testObject = ReflectionHelper.instantiate(testClassContext.getClazz());
             checkQuantity(testClassContext);
-            if (!testClassContext.beforeMethods.isEmpty()) {
-                testClassContext.beforeMethods.get(0).invoke(testObject);
+            if (!testClassContext.getBeforeMethods().isEmpty()) {
+                testClassContext.getBeforeMethods().get(0).invoke(testObject);
                 logger.info("Before {} is done", method.getName());
             }
             try {
@@ -26,10 +27,10 @@ public class TestExecutor {
                 logger.info("Test {} is done", method.getName());
             } catch (Exception e) {
                 logger.info("Test {} not passed", method.getName());
-                testClassContext.failsCounter++;
+                failsCounter++;
             }
-            if (!testClassContext.afterMethods.isEmpty()) {
-                testClassContext.afterMethods.get(0).invoke(testObject);
+            finally {
+                testClassContext.getAfterMethods().get(0).invoke(testObject);
                 logger.info("After {} is done", method.getName());
             }
         }
@@ -38,17 +39,17 @@ public class TestExecutor {
 
     private static void printStatistic(TestClassContext testClassContext) {
         System.out.println("Test  results");
-        System.out.println("Total test completed: " + testClassContext.testMethods.size());
-        System.out.println("Successful: " + (testClassContext.testMethods.size() - testClassContext.failsCounter));
-        System.out.println("Failed: " + testClassContext.failsCounter);
+        System.out.println("Total test completed: " + testClassContext.getTestMethods().size());
+        System.out.println("Successful: " + (testClassContext.getTestMethods().size() - failsCounter));
+        System.out.println("Failed: " + failsCounter);
 
     }
 
     private static void checkQuantity(TestClassContext testClassContext) {
-        if (testClassContext.beforeMethods.size() > 1) {
+        if (testClassContext.getBeforeMethods().size() > 1) {
             throw new IllegalArgumentException("There can be no more than one @Before method in the test");
         }
-        if (testClassContext.afterMethods.size() > 1) {
+        if (testClassContext.getAfterMethods().size() > 1) {
             throw new IllegalArgumentException("There can be no more than one @After method in the test");
         }
     }

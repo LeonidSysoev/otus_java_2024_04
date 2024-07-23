@@ -10,11 +10,11 @@ import java.util.List;
 
 public class TestClassContext {
 
-    final List<Method> beforeMethods;
-    final List<Method> testMethods;
-    final List<Method> afterMethods;
-    Class<?> clazz;
-    int failsCounter = 0;
+    private final List<Method> beforeMethods;
+    private final List<Method> testMethods;
+    private final List<Method> afterMethods;
+    private final Class<?> clazz;
+
 
     public TestClassContext(Class<?> clazz) {
         this.beforeMethods = new ArrayList<>();
@@ -35,5 +35,19 @@ public class TestClassContext {
         }
     }
 
+    public List<Method> getBeforeMethods() {
+        return beforeMethods;
+    }
+
+    public List<Method> getTestMethods() {
+        return testMethods;
+    }
+
+    public List<Method> getAfterMethods() {
+        return afterMethods;
+    }
+    public Class<?> getClazz() {
+        return clazz;
+    }
 
 }
