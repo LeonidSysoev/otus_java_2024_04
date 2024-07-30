@@ -114,7 +114,7 @@ class CustomerTest {
     }
 
     @Test
-    @DisplayName("Возвращание в обратном порядке")
+    @DisplayName("Возвращение в обратном порядке")
     void reverseOrderTest() {
         // given
         Customer customer1 = new Customer(1, "Ivan", 233);
